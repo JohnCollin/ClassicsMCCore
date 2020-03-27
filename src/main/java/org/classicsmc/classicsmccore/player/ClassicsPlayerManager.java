@@ -18,6 +18,7 @@ public class ClassicsPlayerManager {
     classicsPlayers.add(classicsPlayer);
   }
   
+  @Deprecated
   public void addClassicsPlayer(Player player) {
     //TODO Grab Player Save File and Configuration & Load Object using GSON
     
@@ -32,6 +33,7 @@ public class ClassicsPlayerManager {
     classicsPlayers.add(new ClassicsPlayer(player));
   }
   
+  @Deprecated
   public ClassicsPlayer getClassicsPlayer(Player player) {
     for(ClassicsPlayer classicsPlayer : classicsPlayers) {
       if(classicsPlayer.getUniqueID().equals(player.getUniqueId())) {
@@ -39,7 +41,6 @@ public class ClassicsPlayerManager {
       }
     }
     
-    //TODO DEBUG This seems to run every single time the same player runs the command.
     ClassicsMCCoreAPI.getClassicsMCCorePlugin().getLogger().info("Couldn't find preexisting config, creating a new one.");
     
     //TODO Grab Player Save File and Configuration & Load Object using GSON
@@ -47,6 +48,8 @@ public class ClassicsPlayerManager {
     final ClassicsPlayer classicsPlayer;
     classicsPlayer = new ClassicsPlayer(player);
   
+    classicsPlayers.add(classicsPlayer);
+    
     return classicsPlayer;
   }
   
@@ -56,8 +59,7 @@ public class ClassicsPlayerManager {
         return classicsPlayer;
       }
     }
-  
-    //TODO DEBUG This seems to run every single time the same player runs the command.
+    
     ClassicsMCCoreAPI.getClassicsMCCorePlugin().getLogger().info("Couldn't find preexisting config, creating a new one.");
     
     //TODO Grab Player Save File and Configuration & Load Object using GSON
@@ -66,6 +68,8 @@ public class ClassicsPlayerManager {
     
     final ClassicsPlayer classicsPlayer;
     classicsPlayer = new ClassicsPlayer(player);
+  
+    classicsPlayers.add(classicsPlayer);
     
     return classicsPlayer;
   }
