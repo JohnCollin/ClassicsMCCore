@@ -1,0 +1,50 @@
+plugins {
+  id 'java'
+}
+
+group 'org.classicsmc.classicsmccore'
+version '1.0.0-ALPHA'
+
+def buildType = 'NIGHTLY'
+//def buildType = 'STABLE'
+//def buildType = 'RELEASE'
+
+sourceCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+
+  maven {
+    url = 'https://papermc.io/repo/repository/maven-public/'
+  }
+
+  maven {
+    url = 'https://oss.sonatype.org/content/repositories/snapshots'
+  }
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.12'
+
+  implementation 'com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT'
+}
+
+jar {
+  manifest {
+    attributes("Manifest-Version": "1.0",
+      "Main-Class": "org.classicsmc.classicsmccore.ClassicsMCCore")
+  }
+}
+
+task fatJar(type: Jar) {
+  manifest.from jar.manifest
+  classifier = buildType
+  from {
+    configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }
+  } {
+    exclude "META-INF/*.SF"
+    exclude "META-INF/*.DSA"
+    exclude "META-INF/*.RSA"
+  }
+  with jar
+}

@@ -1,0 +1,12 @@
+name: ClassicsMCCore
+version: 1.0.0-ALPHA
+description: This is the Core Plugin of the ClassicsMC Suite
+
+authors: [cjohnson]
+
+main: org.classicsmc.classicsmccore.ClassicsMCCore
+database: false
+
+commands:
+  ping:
+    description: Test Base Plugin Functionality
