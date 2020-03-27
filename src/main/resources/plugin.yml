@@ -10,3 +10,6 @@ database: false
 commands:
   ping:
     description: Test Base Plugin Functionality
+  msgtoggle:
+    description: Toggles ability to receive messages
+    aliases: [emsgtoggle]

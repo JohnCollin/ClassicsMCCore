@@ -8,6 +8,8 @@ public class ClassicsPlayer {
   
   private Player player;
   
+  private boolean messageToggle;
+  
   public ClassicsPlayer(Player player) {
     this.player = player;
   }
@@ -26,5 +28,13 @@ public class ClassicsPlayer {
   
   public void setPlayer(Player player) {
     this.player = player;
+  }
+  
+  public boolean getMessageToggle() {
+    return messageToggle;
+  }
+  
+  public void setMessageToggle(boolean messageToggle) {
+    this.messageToggle = messageToggle;
   }
 }

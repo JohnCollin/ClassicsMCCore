@@ -2,6 +2,7 @@ package org.classicsmc.classicsmccore.command.framework;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.classicsmc.classicsmccore.command.framework.executable.ClassicsCommandExecutable;
 
 public abstract class ClassicsCommand {
@@ -34,6 +35,14 @@ public abstract class ClassicsCommand {
   
   public void setClassicsCommandExecutable(ClassicsCommandExecutable classicsCommandExecutable) {
     this.classicsCommandExecutable = classicsCommandExecutable;
+  }
+  
+  protected static Player playerInstanceCheck(CommandSender commandSender) {
+    if(commandSender instanceof Player) {
+      return (Player) commandSender;
+    }
+    
+    return null;
   }
   
   public boolean aliasMatch(String targetAlias) {
